@@ -1,0 +1,51 @@
+name: Publicar frontend no GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Baixar codigo
+        uses: actions/checkout@v6
+      - name: Preparar Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Instalar dependencias
+        run: npm ci
+      - name: Gerar site
+        env:
+          VITE_API_URL: ${{ vars.VITE_API_URL }}
+          VITE_BASE_PATH: ${{ vars.VITE_BASE_PATH || './' }}
+        run: |
+          if [ -z "$VITE_API_URL" ]; then
+            echo "Configure VITE_API_URL em Settings > Secrets and variables > Actions > Variables."
+            exit 1
+          fi
+          npm run build
+      - name: Configurar Pages
+        uses: actions/configure-pages@v5
+      - name: Enviar site
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: dist
+      - name: Publicar
+        id: deployment
+        uses: actions/deploy-pages@v4
