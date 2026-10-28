@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import type { Client } from '../types'
-import { listClients, resetWorkshopData } from '../services/clientService'
+import { listClients } from '../services/clientService'
 
 interface DashboardProps { navigate: (path: string) => void }
 
@@ -38,10 +38,9 @@ export function Dashboard({ navigate }: DashboardProps) {
             <button onClick={() => navigate('/clientes')}><span>01</span><strong>Consultar clientes</strong><small>Pesquisa, tabela e navegação.</small></button>
             <button onClick={() => navigate('/clientes/novo')}><span>02</span><strong>Cadastrar cliente</strong><small>Formulário, componentes e validações.</small></button>
             <button onClick={() => navigate('/atendimentos')} data-cy="dashboard-lab"><span>03</span><strong>Abrir atendimentos</strong><small>Área demonstrativa de componentes e tabela.</small></button>
-            <button onClick={async () => { try { await resetWorkshopData(); await load() } catch { setError('Não foi possível restaurar os clientes.') } }} data-cy="reset-workshop"><span>04</span><strong>Restaurar clientes</strong><small>Volta a base de clientes ao estado inicial.</small></button>
           </div>
         </article>
-        <article className="panel panel--accent"><span className="eyebrow">Workshop</span><h2>Ambiente preparado para repetição</h2><p>Cada conta possui sua própria base de treinamento. Restaure seus clientes quando precisar repetir os exercícios.</p><div className="status-row"><span className="status-dot" />Ambiente de treinamento</div></article>
+        <article className="panel panel--accent"><span className="eyebrow">Workshop</span><h2>Seus dados no servidor</h2><p>Sua conta começa vazia. Os clientes e atendimentos cadastrados por você ficam disponíveis nos próximos acessos.</p><div className="status-row"><span className="status-dot" />Ambiente de treinamento</div></article>
       </section>
     </div>
   )

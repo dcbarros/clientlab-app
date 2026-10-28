@@ -31,7 +31,7 @@ export function Login({ navigate }: LoginProps) {
           <div className="brand brand--light"><span className="brand__mark">CL</span><span><strong>ClientLab</strong><small>Workshop QA</small></span></div>
           <h1>Automação E2E em uma aplicação que parece real.</h1>
           <p>Cadastros, tabelas, upload, validações e fluxos suficientes para evoluir uma suíte Cypress do primeiro teste até a organização sustentável.</p>
-          <div className="hero-card"><span>Ambiente de treinamento</span><strong>Dados isolados por aluno</strong><small>Use, quebre, restaure e teste novamente.</small></div>
+          <div className="hero-card"><span>Ambiente de treinamento</span><strong>Dados isolados por aluno</strong><small>Cadastre seus dados e pratique os testes.</small></div>
         </div>
       </section>
       <section className="login-panel">

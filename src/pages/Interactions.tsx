@@ -11,7 +11,6 @@ import {
   createInteraction,
   deleteInteraction,
   listInteractions,
-  resetInteractions,
   updateInteractionStatus,
 } from "../services/interactionService";
 import type {
@@ -223,13 +222,6 @@ export function Interactions() {
     window.setTimeout(() => setNotice(""), 1600);
   }
 
-  async function restore() {
-    try { await resetInteractions(); } catch { setNotice("Não foi possível restaurar os atendimentos."); return; }
-    setSelectedIds([]);
-    setNotice("Dados da área demonstrativa restaurados.");
-    void load();
-  }
-
   return (
     <div className="page">
       <header className="page-header">
@@ -241,14 +233,6 @@ export function Interactions() {
             dos exercícios nas telas de clientes.
           </p>
         </div>
-        <button
-          className="button button--secondary"
-          type="button"
-          onClick={restore}
-          data-cy="lab-reset"
-        >
-          Restaurar exemplos
-        </button>
       </header>
 
       {notice ? (

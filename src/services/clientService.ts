@@ -51,7 +51,3 @@ export async function lookupCep(cep: string): Promise<CepResult | null> {
   }
 }
 
-export async function resetWorkshopData(): Promise<void> {
-  await api('/api/workshop/reset/clients', 'POST')
-  window.dispatchEvent(new CustomEvent('clientlab:clients-changed'))
-}

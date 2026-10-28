@@ -14,7 +14,7 @@ export function Users() {
     event.preventDefault(); setBusy(true); setNotice('')
     try {
       await api('/api/admin/users', 'POST', { username, password })
-      setPassword(''); setUsername(''); setNotice('Usuário criado com base inicial própria.'); await load()
+      setPassword(''); setUsername(''); setNotice('Usuário criado. A conta começa sem clientes e atendimentos.'); await load()
     } catch (e) { setNotice(e instanceof Error ? e.message : 'Falha ao criar usuário.') }
     finally { setBusy(false) }
   }

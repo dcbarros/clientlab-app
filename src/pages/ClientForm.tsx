@@ -7,7 +7,7 @@ import {
   type DragEvent,
   type FormEvent,
 } from "react";
-import { CLIENT_INTERESTS } from "../data/seed";
+import { CLIENT_INTERESTS } from "../data/options";
 import { getClient, lookupCep, saveClient } from "../services/clientService";
 import type { Client, Relationship } from "../types";
 import { Field } from "../components/Field";

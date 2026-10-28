@@ -8,4 +8,3 @@ export async function updateInteractionStatus(id: string, status: InteractionSta
   await api(`/api/interactions/${encodeURIComponent(id)}`, 'PATCH', { status })
 }
 export async function deleteInteraction(id: string): Promise<void> { await api(`/api/interactions/${encodeURIComponent(id)}`, 'DELETE') }
-export async function resetInteractions(): Promise<void> { await api('/api/workshop/reset/interactions', 'POST') }
