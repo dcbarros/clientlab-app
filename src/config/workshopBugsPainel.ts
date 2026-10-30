@@ -40,7 +40,7 @@ interface WorkshopFeatures {
 */
 export const WORKSHOP_FEATURES_BUGS: WorkshopFeatures = {
   clientForm: {
-    saveButtonBugs: true,
+    saveButtonBugs: false,
     cancelButtonBugs: true,
     pictureBugs: true,
     birthdayInputBugs: true,
